@@ -15,11 +15,23 @@
  */
 package org.kie.kogito.examples;
 
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Default;
+
+import org.jboss.logging.Logger;
 import org.kie.kogito.rules.DataSource;
 import org.kie.kogito.rules.DataStore;
 import org.kie.kogito.rules.RuleUnitData;
 
+@Dependent
 public class Hello implements RuleUnitData {
+    private static final Logger LOG = Logger.getLogger(Hello.class);
+
+    {
+        LOG.info("Initializing Hello.");
+    }
+
+
     DataStore<String> strings = DataSource.createStore();
 
     public DataStore<String> getStrings() {
